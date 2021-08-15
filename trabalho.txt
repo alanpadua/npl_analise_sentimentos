@@ -1,0 +1,27 @@
+Trabalho: Análise de Sentimento
+
+
+Classificar sentimento (positivo e negativo) na base de tweets a ser fornecida utilizando 3 métodos diferentes: 
+- Dois métodos clássicos 
+- Um método utilizando deep learning 
+
+
+Um método consiste em uma forma de vetorização (Contagem, vetor binário, TF-IDF, Embeddings, etc.) e um classificador 
+
+
+O grupo deverá comentar um pouco sobre os métodos utilizados (comentar sobre a vetorização e sobre o classificador) e fazer uma análise de cada método: 
+- Acurácia 
+- Precision 
+- Recall 
+- F-measure (F1 Score) 
+
+
+Fazer comparativo dos métodos utilizando os critérios acima. 
+Qual o melhor? 
+O que pode melhorar? 
+Quais as vantagens e desvantagens de cada método. 
+
+
+O trabalho deve ser obrigatoriamente apresentado. Haverá sorteio do dia da apresentação e a ordem. 
+No dia da apresentação, o grupo terá 15 min para apresentar o trabalho (será utilizado compartilhamento de tela com o grupo). 
+O grupo pode utilizar qualquer recurso para facilitar a apresentação (slides, trechos de códigos, etc.)
