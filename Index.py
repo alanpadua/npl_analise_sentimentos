@@ -5,7 +5,7 @@ import pandas as pd
 class Index:
     def __init__(self) -> None:
         tratar_dados = TratarDados()
-        treinamento = Treinamento()
+        treinamento  = Treinamento()
         tweets = tratar_dados.importar_parcial(100)
         tweets = tratar_dados.preprocess_reviews(tweets)
         

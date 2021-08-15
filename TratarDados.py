@@ -21,25 +21,20 @@ class TratarDados:
         self.arquivo: str = "dados/training.1600000.processed.noemoticon.csv"
         self.tweets: pd.DataFrame
 
-        self.REPLACE_NO_SPACE = re.compile(
-            "(\.)|(\;)|(\:)|(\!)|(\')|(\?)|(\,)|(\")|(\()|(\))|(\[)|(\]|(\@))")
+        self.REPLACE_NO_SPACE = re.compile("(\.)|(\;)|(\:)|(\!)|(\')|(\?)|(\,)|(\")|(\()|(\))|(\[)|(\]|(\@))")
         self.REPLACE_WITH_SPACE = re.compile("(<br\s*/><br\s*/>)|(\-)|(\/)")
 
         pass
 
     def preprocess_reviews(self, dados: pd.DataFrame):
-        dados['Texto'] = dados['Texto'].apply(
-            lambda row: self.REPLACE_NO_SPACE.sub(" ", row))
-        dados['Texto'] = dados['Texto'].apply(
-            lambda row: self.REPLACE_WITH_SPACE.sub(" ", row))
+        dados['Texto'] = dados['Texto'].apply(lambda row: self.REPLACE_NO_SPACE.sub(" ", row))
+        dados['Texto'] = dados['Texto'].apply(lambda row: self.REPLACE_WITH_SPACE.sub(" ", row))
 
         return dados
 
     def importar_csv(self):
-        tweets = pd.read_csv(self.arquivo, encoding='latin-1',
-                             names=['Sentimento', 'Index', 'Data', 'Tipo', 'Usuario', 'Texto'])
-        tweets = pd.DataFrame(
-            tweets, columns=['Sentimento', 'Data', 'Usuario', 'Texto'])
+        tweets = pd.read_csv(self.arquivo, encoding='latin-1', names=['Sentimento', 'Index', 'Data', 'Tipo', 'Usuario', 'Texto'])
+        tweets = pd.DataFrame(tweets, columns=['Sentimento', 'Data', 'Usuario', 'Texto'])
 
         return tweets
 
@@ -100,7 +95,7 @@ class TratarDados:
         userPattern = '@[^\s]+'
         stopword = set(stopwords.words('english'))
 
-        some = 'amp|today|tomorrow|going|girl|tonight|getting|day|get|http|com|go|one|lol'
+        palavras_removidas = 'amp|today|tomorrow|going|girl|tonight|getting|day|get|http|com|go|one|lol'
 
         # Lower Casing
         tweet = re.sub(r"he's", "he is", tweet)
@@ -220,7 +215,7 @@ class TratarDados:
         tweet = re.sub(userPattern, '', tweet)
 
         # Remove some words
-        tweet = re.sub(some, '', tweet)
+        tweet = re.sub(palavras_removidas, '', tweet)
 
         # Remove pontuações
         # tweet = tweet.translate(str.maketrans("", "", string.punctuation))

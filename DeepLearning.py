@@ -21,7 +21,7 @@ class DeepLearning:
                              loss='binary_crossentropy',
                              metrics=['accuracy'])
 
-    def treinar_modelo(self, model, X_treino, y_treino, X_teste, y_teste):
+    def treinar_modelo(self, model, X_treino, y_treino, X_teste, y_teste, epochs=20):
         history = model.fit(X_treino,
                             y_treino,
                             epochs=20,
