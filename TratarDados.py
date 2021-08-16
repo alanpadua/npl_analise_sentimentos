@@ -95,7 +95,7 @@ class TratarDados:
         userPattern = '@[^\s]+'
         stopword = set(stopwords.words('english'))
 
-        palavras_removidas = 'amp|today|tomorrow|going|girl|tonight|getting|day|get|http|com|go|one|lol'
+        palavras_removidas = 'amp|today|tomorrow|going|girl|tonight|getting|day|get|http|com|got|one|lol|quot|im|od|new|twitter|nna'
 
         # Lower Casing
         tweet = re.sub(r"he's", "he is", tweet)
@@ -218,21 +218,22 @@ class TratarDados:
         tweet = re.sub(palavras_removidas, '', tweet)
 
         # Remove pontuações
-        # tweet = tweet.translate(str.maketrans("", "", string.punctuation))
+        tweet = tweet.translate(str.maketrans("", "", string.punctuation))
 
         # tokenizing words
-        # tokens = word_tokenize(tweet)
+        tokens = word_tokenize(tweet)
 
-        #tokens = [w for w in tokens if len(w)>2]
+        tokens = [w for w in tokens if len(w)>2]
         # Remover Stop Words
-        # final_tokens = [w for w in tokens if w not in stopword]
+        final_tokens = [w for w in tokens if w not in stopword]
 
         # reducing a word to its word stem
-        # wordLemm = WordNetLemmatizer()
-        # finalwords = []
-        # for w in final_tokens:
-            # if len(w) > 1:
-                # word = wordLemm.lemmatize(w)
-                # finalwords.append(word)
-        # return ' '.join(finalwords)
-        return tweet
+        wordLemm = WordNetLemmatizer()
+        finalwords = []
+        for w in final_tokens:
+            if len(w) > 1:
+                word = wordLemm.lemmatize(w)
+                finalwords.append(word)
+        return ' '.join(finalwords)
+
+        # return tweet
