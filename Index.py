@@ -6,7 +6,8 @@ class Index:
     def __init__(self) -> None:
         tratar_dados = TratarDados()
         treinamento  = Treinamento()
-        tweets = tratar_dados.importar_parcial(100)
+        # tweets = tratar_dados.importar_parcial(100)
+        tweets = tratar_dados.importar_csv()
         tweets = tratar_dados.preprocess_reviews(tweets)
         
         # nuvem_palavras = tratar_dados.criar_nuvem_palavras(dados=tweets, campo="Texto")
